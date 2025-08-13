@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Skills - Pooja Sowmya's Portfolio</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color:black;
+            color: #eee;
+        }
+
+        header {
+            background-color: #32718a;
+            color: #f8f9fa;
+            padding: 20px 0;
+            text-align: center;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            font-family: 'Georgia', serif;
+            color: #141212;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            text-align: center;
+            position: relative;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+            position: relative;
+        }
+
+        nav ul li a {
+            color: #000; /* Black color for navigation links */
+            text-decoration: none;
+            font-size: 1.2em;
+            transition: color 0.3s, transform 0.3s;
+            position: relative;
+            padding: 10px; /* Ensure space for the glow */
+        }
+
+        nav ul li a::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 120%;
+            height: 120%;
+            background: rgba(255, 255, 255, 0.5); /* Light color */
+            border-radius: 50%; /* Circular shape */
+            transform: translate(-50%, -50%) scale(0);
+            transition: transform 0.3s ease;
+            z-index: -1; /* Behind the text */
+        }
+
+        nav ul li a:hover::before {
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        nav ul li a:hover {
+            color: #e3d5d3;
+            transform: scale(1.1);
+        }
+
+        section {
+            padding: 40px;
+            max-width: 100%;
+            margin: 20px auto;
+            background-color: #333;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+            animation: slideIn 1s ease-out;
+        }
+
+        .skillsHeader {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .skillsHeader h2 {
+            color: transparent; /* Make the text transparent to show the gradient */
+            background: linear-gradient(90deg, #ff007a, #ffcb00, #00d2ff, #00ff99); /* Color gradient */
+            -webkit-background-clip: text; /* Clip the background to text for WebKit browsers */
+            background-clip: text; /* Standard background-clip */
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            font-family: 'Georgia', serif;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* Optional text shadow for better readability */
+        }
+
+        .skillsContainer {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around; /* Space out the boxes */
+            padding: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill--scroll {
+            display: flex;
+            animation: scrollSkills 15s linear infinite;
+        }
+
+        .skill--box {
+            background: #000;
+            width: 150px;
+            height: 150px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            margin: 10px;
+            border-radius: 8px; /* Rounded corners */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Shadow effect */
+            position: relative;
+            overflow: hidden; /* Ensure content stays within rounded corners */
+            border: 2px solid #fff; /* White border */
+            z-index: 2;
+        }
+
+        .skill--box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2); /* Light effect */
+            border-radius: 8px;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+            z-index: 1; /* Behind the content */
+        }
+
+        .skill--box img {
+            height: 80px;
+            width: auto;
+            margin-bottom: 1rem;
+            border: 3px solid #fff; /* White border around icons */
+            border-radius: 50%; /* Circular border */
+            padding: 5px; /* Space between border and image */
+        }
+
+        .skill--box h3 {
+            font-family: 'Georgia', serif;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 18px;
+            margin: 0;
+            color: #fff;
+            z-index: 2; /* Above the light effect */
+        }
+
+        footer {
+            background-color: #181717;
+            color: #bbb;
+            text-align: center;
+            padding: 10px 0;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(-100%); }
+            to { transform: translateX(0); }
+        }
+
+        @keyframes scrollSkills {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        @media (min-width: 992px) and (max-width: 1380px) {
+            section {
+                padding: 2rem 1rem 1rem 1rem;
+            }
+            .skillsContainer {
+                padding: 1.5rem;
+                margin-top: 1.5rem;
+            }
+        }
+
+        @media screen and (max-width: 992px) {
+            .skillsContainer {
+                padding: 1rem;
+                margin: 1rem 0;
+            }
+            .skillsHeader h2 {
+                font-size: 3.2rem;
+            }
+            .skill--box {
+                width: 120px;
+                height: 120px;
+            }
+            .skill--box img {
+                height: 60px;
+            }
+            .skill--box h3 {
+                font-size: 16px;
+                margin-top: 0.5rem;
+            }
+        }
+
+        @media screen and (max-width: 800px) {
+            section {
+                padding: 0.5rem;
+            }
+            .skillsContainer {
+                padding: 0.5rem;
+            }
+            .skillsHeader h2 {
+                font-size: 3rem;
+            }
+
+            .skill--box {
+                width: 100px;
+                height: 100px;
+            }
+
+            .skill--box img {
+                height: 50px;
+            }
+
+            .skillsHeader h2 {
+                font-size: 2.5rem;
+            }
+
+            .skill--box h3 {
+                font-size: 14px;
+                margin-top: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>My Skills</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="skills.html">Skills</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section>
+        <div class="skillsHeader">
+            <h2>Technical Skills</h2>
+        </div>
+        <div class="skillsContainer">
+            <div class="skill--scroll">
+                <div class="skill--box">
+                    <img src="c.jpg" alt="C">
+                    <h3>C</h3>
+                </div>
+                <div class="skill--box">
+                    <img src="c++.jpg" alt="C++">
+                    <h3>C++</h3>
+                </div>
+                <div class="skill--box">
+                    <img src="html.jpg" alt="HTML">
+                    <h3>HTML</h3>
+                </div>
+                <div class="skill--box">
+                    <img src="css.jpg" alt="CSS">
+                    <h3>CSS</h3>
+                </div>
+                <div class="skill--box">
+                    <img src="js.jpg" alt="JavaScript">
+                    <h3>JavaScript</h3>
+                </div>
+                <div class="skill--box">
+                    <img src="react.jpg" alt="React JS">
+                    <h3>React JS</h3>
+                </div>
+                <div class="skill--box">
+                    <img src="icons/nodejs.png" alt="Node JS">
+                    <h3>Node JS</h3>
+                </div>
+                <div class="skill--box">
+                    <img src="sql.jpg" alt="SQL">
+                    <h3>SQL</h3>
+                </div>
+                <div class="skill--box">
+                    <img src="jq.jpg" alt="jQuery">
+                    <h3>jQuery</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Pooja Sowmya</p>
+    </footer>
+</body>
+</html>
